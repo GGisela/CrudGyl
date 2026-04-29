@@ -25,4 +25,10 @@ public class VentaController {
         // 2. Transforma y responde
         return ResponseEntity.ok(ventaMapper.toResponseDto(nuevaVenta));
     }
+
+    /*prueba para comprar
+    @GetMapping("/test")
+    public String test() {
+        return "El controlador de ventas funciona!";
+    }*/
 }

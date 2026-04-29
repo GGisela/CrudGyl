@@ -7,13 +7,13 @@ import com.gyl.CrudGyl.exception.RecursosNoEncontradoException;
 import com.gyl.CrudGyl.mapper.TipoProductoMapper;
 import com.gyl.CrudGyl.repository.TipoProductoRepository;
 import com.gyl.CrudGyl.service.TipoProductoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+
 @Service
-public class TipoProductoServicioImpl implements TipoProductoService {
-@Autowired
+public class TipoProductoServicioImpl implements TipoProductoService{
+
+
     private final TipoProductoRepository tipoProductoRepositorio;
 
 

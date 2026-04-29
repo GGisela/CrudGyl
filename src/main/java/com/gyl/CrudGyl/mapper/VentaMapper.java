@@ -11,7 +11,7 @@ public class VentaMapper {
 
     public VentaResponseDto toResponseDto(Venta venta) {
         VentaResponseDto dto = new VentaResponseDto();
-        dto.setId_venta(venta.getId_venta());
+        dto.setIdVenta(venta.getId_venta());
         dto.setFecha(venta.getFechaVenta());
         dto.setTotal(venta.getTotal());
 

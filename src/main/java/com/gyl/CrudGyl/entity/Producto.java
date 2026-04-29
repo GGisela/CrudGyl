@@ -17,7 +17,8 @@ public class Producto {
 //PRODUCTO tiene una FK de id_tipo_producto.
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id_producto;
+@Column(name = "id")
+private Long id_Producto;
     private String nombre;
     private Double precio;
     private Integer stock;

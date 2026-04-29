@@ -6,7 +6,7 @@ import java.util.List;
 
 @Data
 public class VentaResponseDto {
-    private Long id_venta;
+    private Long idVenta;
     private LocalDate fecha;
     private String nombreCliente;
     private Double total;

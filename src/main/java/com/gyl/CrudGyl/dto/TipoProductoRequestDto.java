@@ -13,7 +13,7 @@ String descripcion
     @Data
     static
     class DetalleCompraDto {
-        private Long id_producto;
+        private Long idProducto;
         private Integer cantidad;
     }
 }
