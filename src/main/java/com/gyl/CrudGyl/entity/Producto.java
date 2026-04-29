@@ -14,19 +14,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Producto {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(nullable=false, length = 100)
+//PRODUCTO tiene una FK de id_tipo_producto.
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id_producto;
     private String nombre;
-
-    @Column(nullable=false)
     private Double precio;
-
-    @Column(nullable=false)
     private Integer stock;
 
-
+    @ManyToOne
+    @JoinColumn(name = "id_tipo_producto")
+    private TipoProducto tipoProducto;
 }

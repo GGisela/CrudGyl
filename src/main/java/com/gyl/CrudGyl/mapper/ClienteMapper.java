@@ -8,7 +8,8 @@ import com.gyl.CrudGyl.entity.Cliente;
 
 public class ClienteMapper {
 
-    public ClienteMapper() {}
+    public ClienteMapper() {
+    }
 
     public static Cliente toEntity(ClienteRequestDto dto) {
         Cliente cliente = new Cliente();
@@ -22,8 +23,15 @@ public class ClienteMapper {
         return cliente;
     }
 
-    public static ClienteResponseDto toResponseDto (Cliente cliente) {
-        return new ClienteResponseDto(cliente.getId(), cliente.getNombre(), cliente.getApellido(), cliente.getCorreo(), cliente.getTelefono(), cliente.getDireccion());
+    public static ClienteResponseDto toResponseDto(Cliente cliente) {
+        return new ClienteResponseDto(
+                cliente.getId_cliente(),
+                cliente.getNombre(),
+                cliente.getApellido(),
+                cliente.getCorreo(),
+                cliente.getTelefono(),
+                cliente.getDireccion()
+        );
     }
 
     public static void actualizarEntidad(Cliente cliente, ClienteRequestDto dto) {
@@ -32,4 +40,9 @@ public class ClienteMapper {
         cliente.setCorreo(dto.correo());
         cliente.setTelefono(dto.telefono());
         cliente.setDireccion(dto.direccion());
+        /* LA SOLUCIÓN AL ERROR en caso que falle el telefono que ahora es string
+        if (dto.telefono() != null) {
+            cliente.setTelefono(Integer.valueOf(dto.telefono()));
+        }*/
     }
+}

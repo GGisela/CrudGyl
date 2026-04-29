@@ -1,5 +1,10 @@
 package com.gyl.CrudGyl.service;
 
+import com.gyl.CrudGyl.dto.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.ClienteResponseDto;
+
+import java.util.List;
+
 public interface ClienteService {
     //List<ClienteDTO> listarTodos();
     ClienteResponseDto crear(ClienteRequestDto dto);

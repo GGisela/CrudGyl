@@ -1,6 +1,7 @@
 package com.gyl.CrudGyl.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
 public record TipoProductoRequestDto(
 
@@ -8,4 +9,11 @@ public record TipoProductoRequestDto(
 String nombre,
 @NotBlank(message = "La descripción no puede estar vacía.")
 String descripcion
-) {}
+) {
+    @Data
+    static
+    class DetalleCompraDto {
+        private Long id_producto;
+        private Integer cantidad;
+    }
+}

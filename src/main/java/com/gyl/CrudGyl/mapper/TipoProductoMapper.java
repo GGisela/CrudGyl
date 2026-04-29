@@ -3,6 +3,8 @@ package com.gyl.CrudGyl.mapper;
 import com.gyl.CrudGyl.dto.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.TipoProductoResponseDto;
 import com.gyl.CrudGyl.entity.TipoProducto;
+
+
 public class TipoProductoMapper {
 
     public static TipoProducto toEntity(TipoProductoRequestDto dto) {
@@ -24,4 +26,4 @@ public class TipoProductoMapper {
         tipoProducto.setDescripcion(dto.descripcion());
     }
 }
-}
+

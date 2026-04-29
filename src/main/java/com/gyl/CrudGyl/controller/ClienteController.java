@@ -1,5 +1,6 @@
 package com.gyl.CrudGyl.controller;
 
+
 import java.util.List;
 
 import jakarta.validation.Valid;
@@ -12,10 +13,10 @@ import com.gyl.CrudGyl.service.ClienteService;
 
 @RestController
 @RequestMapping("/api/clientes")
-public class ClienteControlador {
+public class ClienteController {
     private final ClienteService clienteServicio;
 
-    public ClienteControlador(ClienteService clienteServicio) {this.clienteServicio = clienteServicio;}
+    public ClienteController(ClienteService clienteServicio) {this.clienteServicio = clienteServicio;}
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

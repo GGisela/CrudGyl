@@ -1,20 +1,23 @@
 package com.gyl.CrudGyl.service.impl;
 
-import com.gyl.CrudGyl.exception.RecursosNoEncontradoException;
-import com.gyl.CrudGyl.service.TipoProductoService;
-import com.gyl.CrudGyl.service.TipoProductoService;
 import com.gyl.CrudGyl.dto.TipoProductoRequestDto;
 import com.gyl.CrudGyl.dto.TipoProductoResponseDto;
-import com.gyl.CrudGyl.entity.TipoDeProducto;
+import com.gyl.CrudGyl.entity.TipoProducto;
+import com.gyl.CrudGyl.exception.RecursosNoEncontradoException;
 import com.gyl.CrudGyl.mapper.TipoProductoMapper;
-import com.gyl.CrudGyl.repository.TipoProductoRepositorio;
+import com.gyl.CrudGyl.repository.TipoProductoRepository;
+import com.gyl.CrudGyl.service.TipoProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 @Service
 public class TipoProductoServicioImpl implements TipoProductoService {
-    private final TipoProductoRepositorio tipoProductoRepositorio;
+@Autowired
+    private final TipoProductoRepository tipoProductoRepositorio;
 
-    public TipoProductoServicioImpl(TipoProductoRepositorio tipoProductoRepositorio) {
+
+    public TipoProductoServicioImpl(TipoProductoRepository tipoProductoRepositorio) {
         this.tipoProductoRepositorio = tipoProductoRepositorio;
     }
 
@@ -32,14 +35,19 @@ public class TipoProductoServicioImpl implements TipoProductoService {
     }
 
     @Override
-    public TipoProductoResponseDto buscarPorId(Long idBuscado) {
-        return tipoProductoRepositorio.findById(idBuscado).map(TipoProductoMapper::toResponseDto)
-                .orElseThrow(() -> new RecursosNoEncontradoException("No se encontró el id " + idBuscado));
+    public TipoProductoResponseDto buscarPorId(Long id) {
+        return tipoProductoRepositorio.findById(id) // 1. Buscamos en la DB
+                .map(TipoProductoMapper::toResponseDto) // 2. Convertimos a DTO si existe
+                .orElseThrow(() -> new RecursosNoEncontradoException(
+                        "No se encontró el tipo de producto con id: " + id)); // 3. Error si no existe
     }
 
     @Override
     public List<TipoProductoResponseDto> buscarPorNombre(String nombreBuscado) {
-        return tipoProductoRepositorio.findByNombre(nombreBuscado).stream().map(TipoProductoMapper::toResponseDto)
+        // Cambio findBy por findByNombre
+        return tipoProductoRepositorio.findByNombre(nombreBuscado)
+                .stream()
+                .map(TipoProductoMapper::toResponseDto)
                 .toList();
     }
 

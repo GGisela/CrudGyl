@@ -30,7 +30,6 @@ public class Cliente {
     @Column(nullable=false, length = 100)
     private String direccion;
 
-    @Column(nullable=false)
-    private Integer telefono;
-
+    @Column(nullable=false, length = 20) // Agregamos el @Column que te daba error
+    private String telefono;
 }
