@@ -27,7 +27,7 @@ public class VentaServiceImpl implements VentaService {
                 .orElseThrow(() -> new RecursosNoEncontradoException("Cliente no existe"));
 
         Venta venta = new Venta();
-        venta.setCliente(cliente); // Este es el "symbol" que no encontraba
+        venta.setCliente(cliente);
         venta.setFechaVenta(LocalDate.now());
         venta.setTotal(0.0);
         venta.setDetalles(new ArrayList<>());

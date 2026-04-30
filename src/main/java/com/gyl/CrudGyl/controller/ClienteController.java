@@ -3,6 +3,8 @@ package com.gyl.CrudGyl.controller;
 
 import java.util.List;
 
+import com.gyl.CrudGyl.dto.ProductResponseDto;
+import com.gyl.CrudGyl.dto.ProductoRequestDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +17,16 @@ import com.gyl.CrudGyl.service.ClienteService;
 @RequestMapping("/api/clientes")
 public class ClienteController {
     private final ClienteService clienteServicio;
+    private final ClienteService clienteService;
 
-    public ClienteController(ClienteService clienteServicio) {this.clienteServicio = clienteServicio;}
+    public ClienteController(ClienteService clienteServicio, ClienteService clienteService) {this.clienteServicio = clienteServicio;
+        this.clienteService = clienteService;
+    }
 
-    @PostMapping
+    @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteResponseDto crear(@Valid @RequestBody ClienteRequestDto dto) {return clienteServicio.crear(dto);}
+    public ClienteResponseDto crear(@RequestBody ClienteRequestDto dto) {return clienteServicio.crear(dto);}
+
 
     @GetMapping
     public List<ClienteResponseDto> listar() {return clienteServicio.listar();}

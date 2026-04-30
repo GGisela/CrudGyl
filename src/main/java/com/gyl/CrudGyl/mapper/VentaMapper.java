@@ -11,8 +11,8 @@ public class VentaMapper {
 
     public VentaResponseDto toResponseDto(Venta venta) {
         VentaResponseDto dto = new VentaResponseDto();
-        dto.setIdVenta(venta.getId_venta());
-        dto.setFecha(venta.getFechaVenta());
+        dto.setId_venta(venta.getId_venta());
+        dto.setFechaVenta(venta.getFechaVenta());
         dto.setTotal(venta.getTotal());
 
         // Unimos nombre y apellido del cliente

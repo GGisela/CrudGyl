@@ -6,8 +6,8 @@ import java.util.List;
 
 @Data
 public class VentaResponseDto {
-    private Long idVenta;
-    private LocalDate fecha;
+    private Long id_venta;
+    private LocalDate fechaVenta;
     private String nombreCliente;
     private Double total;
     private List<DetalleResponseDto> items;

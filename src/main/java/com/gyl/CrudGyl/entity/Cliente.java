@@ -16,8 +16,8 @@ import lombok.Setter;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id_cliente; //pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_cliente; //pk
 
     @Column(nullable=false, length = 100)
     private String nombre;
