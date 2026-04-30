@@ -1,0 +1,48 @@
+package com.gyl.CrudGyl.mapper;
+
+
+
+import com.gyl.CrudGyl.dto.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.ClienteResponseDto;
+import com.gyl.CrudGyl.entity.Cliente;
+
+public class ClienteMapper {
+
+    public ClienteMapper() {
+    }
+
+    public static Cliente toEntity(ClienteRequestDto dto) {
+        Cliente cliente = new Cliente();
+
+        cliente.setNombre(dto.nombre());
+        cliente.setApellido(dto.apellido());
+        cliente.setCorreo(dto.correo());
+        cliente.setTelefono(dto.telefono());
+        cliente.setDireccion(dto.direccion());
+
+        return cliente;
+    }
+
+    public static ClienteResponseDto toResponseDto(Cliente cliente) {
+        return new ClienteResponseDto(
+                cliente.getId_cliente(),
+                cliente.getNombre(),
+                cliente.getApellido(),
+                cliente.getCorreo(),
+                cliente.getTelefono(),
+                cliente.getDireccion()
+        );
+    }
+
+    public static void actualizarEntidad(Cliente cliente, ClienteRequestDto dto) {
+        cliente.setNombre(dto.nombre());
+        cliente.setApellido(dto.apellido());
+        cliente.setCorreo(dto.correo());
+        cliente.setTelefono(dto.telefono());
+        cliente.setDireccion(dto.direccion());
+        /* LA SOLUCIÓN AL ERROR en caso que falle el telefono que ahora es string
+        if (dto.telefono() != null) {
+            cliente.setTelefono(Integer.valueOf(dto.telefono()));
+        }*/
+    }
+}
