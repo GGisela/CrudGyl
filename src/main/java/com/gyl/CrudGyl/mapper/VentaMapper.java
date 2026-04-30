@@ -19,11 +19,11 @@ public class VentaMapper {
         dto.setNombreCliente(venta.getCliente().getNombre() + " " + venta.getCliente().getApellido());
 
         // Mapeamos los detalles
-        dto.setItems(venta.getDetalles().stream().map(detalle -> {
+        dto.setItems(venta.getDetalles().stream().map(detalles -> {
             var itemDto = new DetalleResponseDto();
-            itemDto.setNombreProducto(detalle.getProducto().getNombre());
-            itemDto.setCantidad(detalle.getCantidad());
-            itemDto.setSubtotal(detalle.getSubtotal());
+            itemDto.setNombreProducto(detalles.getProducto().getNombre());
+            itemDto.setCantidad(detalles.getCantidad());
+            itemDto.setSubtotal(detalles.getSubtotal());
             return itemDto;
         }).collect(Collectors.toList()));
 
