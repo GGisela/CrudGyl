@@ -6,6 +6,7 @@ import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.service.ProductoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,11 +48,16 @@ public ProductResponseDto buscarPorId(@PathVariable Long id) {
         return productoService.actualizar(id, dto);
     }
 
-    // 3 Eliminar (Retorna 204 No Content (en postman) si es exitoso -porque no suele devolver datos)
+    /* 3 Eliminar (Retorna 204 No Content (en postman) si es exitoso -porque no suele devolver datos)
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void eliminar(@PathVariable Long id) {
         productoService.eliminar(id);
+    }*/
+    @PatchMapping("/{id}/baja")
+    public ResponseEntity<String> darDeBaja(@PathVariable Long id) {
+        productoService.eliminar(id);
+        return ResponseEntity.ok("Producto desactivado correctamente.");
     }
 
     // 4 Búsqueda por nombre

@@ -9,9 +9,16 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
+    // Usa el service para listar prod activos(baja logica)
+    List<Producto> findByActivoTrue();
 
     List<Producto> findByNombre(String nombre);
     List<Producto> findByStock(Integer stock);
 
+    //  !!futuras mejoras con filtros de busqueda
+    //PLUS Búsqueda por nombre , Usamos 'Containing' para que busque coincidencias parciales (opcional)
+    //List<Producto> findByNombreContainingIgnoreCase(String nombre);
 
+    // Búsqueda por stock (ej para ver productos que se están agotando)
+   // List<Producto> findByStock(Integer stock);
 }
