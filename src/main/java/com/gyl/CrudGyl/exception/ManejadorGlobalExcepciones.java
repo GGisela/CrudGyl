@@ -17,13 +17,13 @@ public class ManejadorGlobalExcepciones {
         @ExceptionHandler(NoHandlerFoundException.class)
         public ResponseEntity<Object> handleNotFound(NoHandlerFoundException ex, WebRequest request) {
 
-            // Creamos un mapa para que el JSON sea legible
+            // mapa para que el JSON sea legible
             Map<String, Object> body = new LinkedHashMap<>();
             body.put("mensaje", ex.getMessage());
             body.put("descripcion", request.getDescription(false));
             body.put("status", "No encontrado, pero respondo OK");
 
-            // El truco está aquí: Pasamos el cuerpo y HttpStatus.OK
+            // Pasamos el cuerpo y HttpStatus.OK
             return new ResponseEntity<>(body, HttpStatus.OK);
         }
     @ExceptionHandler(Exception.class)
