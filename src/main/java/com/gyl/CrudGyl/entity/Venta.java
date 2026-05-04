@@ -7,8 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ventas")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Venta {
@@ -23,13 +22,10 @@ public class Venta {
     @Column(nullable = false)
     private Double total;
 
-    // Relación con Cliente: Una venta pertenece a un cliente
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente cliente;
 
-    // Relación con los detalles (Opcional, pero útil para navegar desde la venta)
-    //
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     private List<DetalleVenta> detalles;
 }

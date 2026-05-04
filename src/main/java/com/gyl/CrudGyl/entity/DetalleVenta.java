@@ -24,12 +24,10 @@ public class DetalleVenta {
     @Column(nullable = false)
     private Double subtotal;
 
-    // Relación con Venta: Muchos detalles pertenecen a una venta
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_venta", nullable = false)
     private Venta venta;
 
-    // Relación con Producto: Muchos detalles pueden referenciar al mismo producto
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_producto", nullable = false)
     private Producto producto;
