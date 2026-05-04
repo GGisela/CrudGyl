@@ -24,7 +24,7 @@ private Long id_Producto;
     private Integer stock;
 
     @Column(nullable = false)
-    private boolean activo = true; // Por defecto, todo producto nuevo está activo
+    private boolean activo = true;
     @ManyToOne
     @JoinColumn(name = "id_tipo_producto")
     private TipoProducto tipoProducto;
