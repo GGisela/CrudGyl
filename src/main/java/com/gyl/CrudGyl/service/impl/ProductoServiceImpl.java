@@ -38,7 +38,13 @@ public class ProductoServiceImpl implements ProductoService {
         Producto guardado = productoRepository.save(producto);
         return ProductoMapper.toResponseDto(guardado);
     }
-
+    @Override
+    public List<ProductResponseDto> listarInactivos() {
+        return productoRepository.findByActivoFalse() // El método que crearemos en el Repo
+                .stream()
+                .map(ProductoMapper::toResponseDto)
+                .toList();
+    }
     @Override
     public List<ProductResponseDto> listar() {
         // Solo lista los que están activos (Baja lógica aplicada)

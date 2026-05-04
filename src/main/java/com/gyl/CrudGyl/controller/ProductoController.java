@@ -4,6 +4,7 @@ import com.gyl.CrudGyl.dto.ProductResponseDto;
 import com.gyl.CrudGyl.dto.ProductoRequestDto;
 import com.gyl.CrudGyl.entity.Producto;
 import com.gyl.CrudGyl.service.ProductoService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,11 @@ public class ProductoController {
     public List<ProductResponseDto> listar(){
         return productoService.listar();
     }
-
+    @GetMapping("/inactivos")
+    @Operation(summary = "Listar productos dados de baja", description = "Retorna INACTIVOS (bandera de activo es false)")
+    public List<ProductResponseDto> listarInactivos() {
+        return productoService.listarInactivos();
+    }
 //@PathVariable para recursos específicos (como un ID)
     //@RequestParam para filtros de búsqueda
 

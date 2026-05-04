@@ -9,6 +9,7 @@ String nombre,
 @NotBlank(message = "El apellido no puede estar vacío.")
 String apellido,
 @NotBlank(message = "El correo no puede estar vacío.")
+@Email
 String correo,
 @NotBlank(message = "La dirección no puede estar vacía.")
 String direccion,
