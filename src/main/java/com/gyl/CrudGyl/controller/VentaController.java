@@ -5,6 +5,7 @@ import com.gyl.CrudGyl.dto.VentaResponseDto;
 import com.gyl.CrudGyl.entity.Venta;
 import com.gyl.CrudGyl.mapper.VentaMapper;
 import com.gyl.CrudGyl.service.VentaService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,16 +13,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:5173") // <-- AGREGA ESTO para FRONT
 @RestController
 @RequestMapping("/api/ventas")
+ @RequiredArgsConstructor
 public class VentaController {
 
-    @Autowired
-    private VentaService ventaService;
 
-    @Autowired
-    private VentaMapper ventaMapper;
+    private final VentaService ventaService;
+
+
+    private final VentaMapper ventaMapper;
 
     // 1 Crear una nueva venta
     @PostMapping("/crear")
@@ -30,7 +32,7 @@ public class VentaController {
         return new ResponseEntity<>(ventaMapper.toResponseDto(nuevaVenta), HttpStatus.CREATED);
     }
 
-    // 2. Obt el historial de todas las ventas
+    // 2 Obt el historial de todas las ventas
     @GetMapping("/listar")
     public ResponseEntity<List<VentaResponseDto>> listarVentas() {
         List<Venta> ventas = ventaService.listarTodas();
@@ -42,8 +44,7 @@ public class VentaController {
 
         return ResponseEntity.ok(respuesta);
     }
-//---ultimo paso en ventas
-    // 3 Obt el total acumulado de dinero en el sistema
+    //  Obt el total acumulado de dinero en el sistema
     @GetMapping("/total-recaudado")
     public ResponseEntity<String> obtenerTotalRecaudado() {
         Double granTotal = ventaService.obtenerGranTotal();

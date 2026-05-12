@@ -40,9 +40,6 @@ public class ClienteMapper {
         cliente.setCorreo(dto.correo());
         cliente.setTelefono(dto.telefono());
         cliente.setDireccion(dto.direccion());
-        /* LA SOLUCIÓN AL ERROR en caso que falle el telefono que ahora es string
-        if (dto.telefono() != null) {
-            cliente.setTelefono(Integer.valueOf(dto.telefono()));
-        }*/
+
     }
 }
