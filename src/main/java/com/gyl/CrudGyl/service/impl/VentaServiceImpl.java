@@ -50,7 +50,7 @@ public class VentaServiceImpl implements VentaService {
             producto.setStock(producto.getStock() - itemDto.cantidad());
             productoRepository.save(producto);
 
-            // 3 Crea Detalle
+            //  Crea Detalle
             DetalleVenta detalle = new DetalleVenta();
             detalle.setVenta(venta);
             detalle.setProducto(producto);

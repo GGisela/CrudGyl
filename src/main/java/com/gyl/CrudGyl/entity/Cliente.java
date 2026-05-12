@@ -12,12 +12,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Column
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_cliente; //pk
+    private Long id_cliente;
 
     @Column(nullable=false, length = 100)
     private String nombre;
@@ -30,6 +29,6 @@ public class Cliente {
     @Column(nullable=false, length = 100)
     private String direccion;
 
-    @Column(nullable=false, length = 20) // Agregamos el @Column que te daba error
+    @Column(nullable=false, length = 20)
     private String telefono;
 }

@@ -1,52 +1,56 @@
 package com.gyl.CrudGyl.controller;
 
-
 import java.util.List;
-
-import com.gyl.CrudGyl.dto.ProductResponseDto;
-import com.gyl.CrudGyl.dto.ProductoRequestDto;
+import com.gyl.CrudGyl.dto.ClienteRequestDto;
+import com.gyl.CrudGyl.dto.ClienteResponseDto;
+import com.gyl.CrudGyl.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.gyl.CrudGyl.dto.ClienteRequestDto;
-import com.gyl.CrudGyl.dto.ClienteResponseDto;
-import com.gyl.CrudGyl.service.ClienteService;
-
+@CrossOrigin(origins = "*") // Permite que cualquier front acceda mientras desarrollas
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
-    private final ClienteService clienteServicio;
+
+
     private final ClienteService clienteService;
 
-    public ClienteController(ClienteService clienteServicio, ClienteService clienteService) {this.clienteServicio = clienteServicio;
+    // El constructor recibe un ClienteService
+    public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
 
     @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteResponseDto crear(@RequestBody ClienteRequestDto dto) {return clienteServicio.crear(dto);}
+    public ClienteResponseDto crear(@Valid @RequestBody ClienteRequestDto dto) {
+        return clienteService.crear(dto);
+    }
 
-
+    // Este es el metodo de Front para llenar el selector (Select)
     @GetMapping
-    public List<ClienteResponseDto> listar() {return clienteServicio.listar();}
+    public List<ClienteResponseDto> listar() {
+        return clienteService.listar();
+    }
 
     @GetMapping("/{idBuscado}")
     public ClienteResponseDto buscarPorId(@PathVariable Long idBuscado) {
-        return clienteServicio.buscarPorId(idBuscado);
+        return clienteService.buscarPorId(idBuscado);
     }
 
     @GetMapping("/nombre")
     public List<ClienteResponseDto> buscarPorNombre(@RequestParam String nombre) {
-        return clienteServicio.buscarPorNombre(nombre);
+        return clienteService.buscarPorNombre(nombre);
     }
 
-    @PostMapping("/{idBuscado}")
+    @PutMapping("/{idBuscado}") // para actualizar
     public ClienteResponseDto actualizar(@PathVariable Long idBuscado, @Valid @RequestBody ClienteRequestDto dto) {
-        return clienteServicio.actualizar(idBuscado, dto);
+        return clienteService.actualizar(idBuscado, dto);
     }
 
     @DeleteMapping("/{idBuscado}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminar(@PathVariable Long idBuscado) {clienteServicio.eliminar(idBuscado);}
+    public void eliminar(@PathVariable Long idBuscado) {
+        clienteService.eliminar(idBuscado);
+    }
 }
