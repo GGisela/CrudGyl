@@ -8,7 +8,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*") // Permite que cualquier front acceda mientras desarrollas
+
+@CrossOrigin(origins = "http://localhost:5173") // Permite que cualquier front acceda mientras desarrollas
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {

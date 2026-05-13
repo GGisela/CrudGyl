@@ -20,7 +20,9 @@ public class Producto {
 @Column(name = "id")
 private Long id_Producto;
     private String nombre;
+
     private Double precio;
+
     private Integer stock;
 
     @Column(nullable = false)
